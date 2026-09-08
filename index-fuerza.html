@@ -432,6 +432,57 @@
     .page { padding-top: 60px; }
     body { padding-bottom: 52px; }
   }
+
+  @font-face {
+    font-family: "JetBrains Mono"; font-style: normal; font-weight: 100 800;
+    font-display: swap; src: url("/assets/fonts/jetbrains-mono-normal-latin.woff2") format("woff2");
+  }
+  h1 { font-size: clamp(32px, 8.5vw, 40px); line-height: 1.08; letter-spacing: -.035em; text-wrap: balance; }
+  .headline-match { background: linear-gradient(transparent 76%, var(--accent) 76%, var(--accent) 94%, transparent 94%); }
+  .lbl { font-family: "JetBrains Mono", monospace; }
+  .lbl { letter-spacing: .07em; }
+  .subhead { margin-top: 16px; color: var(--ink-soft); }
+  .proof { margin-top: 24px; min-width: 0; }
+  .proof-label { font-size: 11px; font-weight: 400; margin-bottom: 12px; }
+  /* El scroll nativo mantiene el gesto táctil aun sin JavaScript. */
+  .proof-grid { --slide: 210px; display: flex; gap: 8px; overflow-x: auto; padding: 4px max(0px, calc((100% - var(--slide)) / 2)) 0; scroll-snap-type: x mandatory; scrollbar-width: none; overscroll-behavior-x: contain; }
+  .proof-grid::-webkit-scrollbar { display: none; }
+  .proof-grid:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
+  .proof-case { flex: 0 0 var(--slide); min-width: 0; scroll-snap-align: center; border-bottom: 3px solid transparent; padding-bottom: 4px; }
+  .proof-case img { display: block; width: 100%; height: auto; border-radius: 4px; transform: perspective(650px) rotateY(var(--rotation, 0deg)) scale(var(--scale, 1)); }
+  .proof-case figcaption { font-size: 12px; font-weight: 400; margin-top: 8px; text-align: center; }
+  .proof-case.is-selected { border-color: var(--accent); }
+  .gallery-controls { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 4px; }
+  .gallery-controls button { width: 44px; height: 44px; padding: 0; margin: 0; background: transparent; border: 1px solid var(--line); border-radius: 50%; font-size: 18px; }
+  .gallery-position { font-size: 10px; min-width: 125px; text-align: center; }
+  .form-heading { display: none; }
+  form { margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--line); }
+  .case:has(input:checked) { background: #FFF7D7; color: var(--ink); border-color: var(--ink); box-shadow: inset 0 0 0 .5px var(--ink); }
+  .case:has(input:checked)::after { content: ''; width: 5px; height: 9px; border: solid currentColor; border-width: 0 2px 2px 0; transform: rotate(45deg); position: absolute; right: 10px; top: 8px; }
+  button { letter-spacing: .02em; }
+  @media (prefers-reduced-motion: reduce) { .proof-case img { transform: none; } }
+  @media (max-width: 899px) {
+    .proof-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; padding: 0; overflow: visible; scroll-snap-type: none; }
+    .proof-case img { transform: none; }
+    .proof-case figcaption { font-size: 11px; text-align: left; margin-top: 4px; }
+    .gallery-controls { display: none; }
+  }
+  @media (min-width: 900px) {
+    :root { --max: 1080px; }
+    .page { padding-top: 56px; }
+    #form-view { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 64px; align-items: start; }
+    .story { min-width: 0; padding-top: 8px; }
+    h1 { font-size: clamp(44px, 4.3vw, 58px); }
+    .subhead { max-width: 440px; font-size: 16px; }
+    .proof { margin-top: 28px; }
+    .proof-grid { --slide: 260px; }
+    form { margin-top: 0; border: 1px solid var(--line); border-top: 4px solid var(--accent); border-radius: 12px; padding: 28px; }
+    .form-heading { display: block; margin-bottom: 24px; }
+    .form-heading .lbl { margin-bottom: 6px; }
+    .form-heading h2 { font-family: var(--display); font-size: 24px; line-height: 1.15; font-weight: 600; letter-spacing: -.02em; }
+    .firma { padding-top: 40px; }
+    .foot { margin-top: 24px; }
+  }
   </style>
 </head>
 
@@ -440,17 +491,46 @@
 <main class="page" id="contenido">
 
   <div id="form-view">
-    <div class="eyebrow">Caso de estudio</div>
+    <section class="story" aria-labelledby="optin-title">
 
-    <h1>
-      Mira cómo alguien como tú <span class="headline-end">transformó su cuerpo.</span>
+    <h1 id="optin-title">
+      Mira cómo <span class="headline-match">alguien como tú</span> transformó su cuerpo.
     </h1>
 
     <p class="subhead">
       Selecciona tu sexo y rango de edad para ver el caso y conocer qué hizo, paso a paso.
     </p>
 
+    <div class="proof" aria-label="Los cuatro casos de estudio">
+      <p class="proof-label">Cuatro historias. Un cambio real.</p>
+      <div class="proof-grid" tabindex="0" role="region" aria-roledescription="carrusel" aria-label="Transformaciones: desliza o usa las flechas para explorar">
+        <figure class="proof-case" data-case="flor">
+          <img src="/assets/casos-optin/flor-240.webp" srcset="/assets/casos-optin/flor-240.webp 240w, /assets/casos-optin/flor-480.webp 480w" sizes="(min-width: 900px) 260px, (min-width: 488px) 104px, calc((100vw - 72px) / 4)" width="480" height="480" loading="lazy" decoding="async" alt="Flor: antes a la izquierda y después a la derecha">
+          <figcaption>Flor</figcaption>
+        </figure>
+        <figure class="proof-case" data-case="dashiel">
+          <img src="/assets/casos-optin/dashiel-240.webp" srcset="/assets/casos-optin/dashiel-240.webp 240w, /assets/casos-optin/dashiel-480.webp 480w" sizes="(min-width: 900px) 260px, (min-width: 488px) 104px, calc((100vw - 72px) / 4)" width="480" height="480" loading="lazy" decoding="async" alt="Dashiel: antes a la izquierda y después a la derecha">
+          <figcaption>Dashiel</figcaption>
+        </figure>
+        <figure class="proof-case" data-case="andrea">
+          <img src="/assets/casos-optin/andrea-240.webp" srcset="/assets/casos-optin/andrea-240.webp 240w, /assets/casos-optin/andrea-480.webp 480w" sizes="(min-width: 900px) 260px, (min-width: 488px) 104px, calc((100vw - 72px) / 4)" width="480" height="480" loading="lazy" decoding="async" alt="Andrea: antes a la izquierda y después a la derecha">
+          <figcaption>Andrea</figcaption>
+        </figure>
+        <figure class="proof-case" data-case="christian">
+          <img src="/assets/casos-optin/christian-240.webp" srcset="/assets/casos-optin/christian-240.webp 240w, /assets/casos-optin/christian-480.webp 480w" sizes="(min-width: 900px) 260px, (min-width: 488px) 104px, calc((100vw - 72px) / 4)" width="480" height="480" loading="lazy" decoding="async" alt="Christian: antes a la izquierda y después a la derecha">
+          <figcaption>Christian</figcaption>
+        </figure>
+      </div>
+      <div class="gallery-controls">
+        <button type="button" class="gallery-prev" aria-label="Caso anterior">←</button>
+        <span class="gallery-position" aria-live="polite" aria-atomic="true">Flor · 1 / 4</span>
+        <button type="button" class="gallery-next" aria-label="Caso siguiente">→</button>
+      </div>
+    </div>
+    </section>
+
     <form id="lm-form" novalidate>
+      <div class="form-heading"><span class="lbl">Tu caso de estudio</span><h2>Encuentra tu punto de partida.</h2></div>
       <input type="text" class="honeypot" id="lm-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
 
       <fieldset class="field" style="border:0;" aria-describedby="err-sexo">
@@ -490,6 +570,8 @@
 
       <button type="submit" id="lm-submit"><span>Ver el caso</span><span class="arrow" aria-hidden="true">&rarr;</span></button>
     </form>
+
+
   </div>
 
   <div class="firma">
@@ -570,11 +652,14 @@
         });
       }
     }
+    function getCase(sexo, edad) {
+      return edad === 'mas-35'
+        ? (sexo === 'Mujer' ? 'andrea' : 'christian')
+        : (sexo === 'Mujer' ? 'flor' : 'dashiel');
+    }
     function buildRedirectUrl(sexo, edad, nombre, email) {
       // Mismo origen: preview queda en preview y producción queda en metodo.tr4iner.com.
-      var destino = edad === 'mas-35'
-        ? (sexo === 'Mujer' ? '/testimonio-andrea' : '/testimonio-christian')
-        : (sexo === 'Mujer' ? '/testimonio-flor' : '/testimonio-dashiel');
+      var destino = '/testimonio-' + getCase(sexo, edad);
       var base = new URL(
         destino,
         window.location.origin
@@ -672,9 +757,69 @@
       window.location.href = buildRedirectUrl(sexoVal, edadEl.value, nombre, email);
     });
 
+    var gallery = document.querySelector('.proof-grid');
+    var slides = Array.from(gallery.querySelectorAll('.proof-case'));
+    var activeSlide = 0;
+    var framePending = false;
+    function paintGallery() {
+      framePending = false;
+      var mobile = window.matchMedia('(max-width: 899px)').matches;
+      if (mobile) {
+        gallery.removeAttribute('tabindex');
+        gallery.removeAttribute('aria-roledescription');
+        gallery.setAttribute('aria-label', 'Los cuatro casos de estudio');
+        return;
+      }
+      gallery.setAttribute('tabindex', '0');
+      gallery.setAttribute('aria-roledescription', 'carrusel');
+      gallery.setAttribute('aria-label', 'Transformaciones: desliza o usa las flechas para explorar');
+      var center = gallery.getBoundingClientRect().left + gallery.clientWidth / 2;
+      var nearest = Infinity;
+      slides.forEach(function(slide, index) {
+        var box = slide.getBoundingClientRect();
+        var distance = (box.left + box.width / 2 - center) / box.width;
+        var bounded = Math.max(-1, Math.min(1, distance));
+        slide.style.setProperty('--rotation', (-bounded * 32) + 'deg');
+        slide.style.setProperty('--scale', 1 - Math.abs(bounded) * 0.13);
+        if (Math.abs(distance) < nearest) { nearest = Math.abs(distance); activeSlide = index; }
+      });
+      document.querySelector('.gallery-position').textContent = slides[activeSlide].querySelector('figcaption').textContent + ' · ' + (activeSlide + 1) + ' / 4';
+      document.querySelector('.gallery-prev').disabled = activeSlide === 0;
+      document.querySelector('.gallery-next').disabled = activeSlide === slides.length - 1;
+    }
+    function moveGallery(index) {
+      if (window.matchMedia('(max-width: 899px)').matches) return;
+      var slide = slides[Math.max(0, Math.min(slides.length - 1, index))];
+      var offset = slide.getBoundingClientRect().left - gallery.getBoundingClientRect().left;
+      gallery.scrollTo({ left: gallery.scrollLeft + offset - (gallery.clientWidth - slide.offsetWidth) / 2,
+        behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
+    }
+    gallery.addEventListener('scroll', function() {
+      if (!framePending) { framePending = true; requestAnimationFrame(paintGallery); }
+    }, { passive: true });
+    gallery.addEventListener('keydown', function(event) {
+      if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
+        event.preventDefault(); moveGallery(activeSlide + (event.key === 'ArrowRight' ? 1 : -1));
+      }
+    });
+    document.querySelector('.gallery-prev').addEventListener('click', function() { moveGallery(activeSlide - 1); });
+    document.querySelector('.gallery-next').addEventListener('click', function() { moveGallery(activeSlide + 1); });
+    window.addEventListener('resize', paintGallery);
+    paintGallery();
+
     document.querySelectorAll('input[type="radio"]').forEach(function(input) {
       input.addEventListener('change', function() {
         showErr(this.name === 'sexo' ? 'err-sexo' : 'err-edad', false);
+        var sexo = document.querySelector('input[name="sexo"]:checked');
+        var edad = document.querySelector('input[name="rango_edad"]:checked');
+        if (!sexo || !edad) return;
+        var selected = getCase(sexo.value, edad.value);
+        moveGallery(slides.findIndex(function(slide) { return slide.dataset.case === selected; }));
+        var names = { flor: 'Flor', dashiel: 'Dashiel', andrea: 'Andrea', christian: 'Christian' };
+        document.querySelector('#lm-submit span').textContent = 'Ver el caso de ' + names[selected];
+        document.querySelectorAll('.proof-case').forEach(function(card) {
+          card.classList.toggle('is-selected', card.dataset.case === selected);
+        });
       });
     });
 
