@@ -15,7 +15,7 @@ Páginas **HTML estáticas** de los funnels de TR4INER (coaching fitness de Anth
 
 Este repo contiene **tres funnels distintos**, aunque compartan estilos, `attribution.js` y el mismo proyecto de Vercel:
 
-1. **Caso de Estudio:** adquisición y calificación. La landing principal registra nombre/email/sexo, muestra el VSL Flor o Dashiel, continúa a Typeform y luego al tramo de Calendly.
+1. **Caso de Estudio:** adquisición y calificación. La landing principal registra nombre/email/sexo/rango de edad, muestra Flor, Dashiel, Andrea o Christian según sexo/edad, continúa al mismo Typeform y luego al tramo de Calendly.
 2. **Biblioteca / Programa Cero:** lead magnet independiente para nutrir MQL. Vive completo bajo `/biblioteca/` (`registro → confirma → videos`). No confundir sus leads, webhook ni métricas con Caso de Estudio.
 3. **Médicos / Guardias:** landing de adquisición independiente bajo `/medicos/`. Presenta el método adaptable a consulta, familia y guardias; su conversión principal abre Calendly bajo demanda. No mezcla opt-ins ni métricas con los otros funnels.
 
@@ -29,6 +29,8 @@ Rutas objetivo del proyecto:
 - `/testimonio-flor` → página Flor (`registro-typeform-flor.html`).
 - `/testimonio-flor-va` → variante Flor para tráfico VA (`registro-typeform-flor-va.html`).
 - `/testimonio-dashiel` → página Dashiel (`registro-typeform-optimizado.html`).
+- `/testimonio-andrea` → página Andrea (`testimonio-andrea/index.html`).
+- `/testimonio-christian` → página Christian (`testimonio-christian/index.html`).
 - `/calendly-*` → agendamiento y confirmación del funnel Caso de Estudio.
 - `/fit4` → VSL privada de FIT4CHALLENGE AN y compatibilidad temporal con la selección VA por UTMs.
 - `/fit4-va` → VSL FIT4 fija de Veronika, con canonical y marca de variante propios para el mapeo posterior.
@@ -41,10 +43,12 @@ Las versiones `clickfunnels.html`, generadores `build-clickfunnels.mjs` y archiv
 
 | Archivo | Función |
 |---|---|
-| `index-fuerza.html` | **Landing viva de Caso de Estudio** (`/casos-de-estudio`, vía rewrite). Variante C, ganadora del test de copy. Captura nombre/email/sexo + UTMs y redirige al VSL. |
+| `index-fuerza.html` | **Landing viva de Caso de Estudio** (`/casos-de-estudio`, vía rewrite). Titular «Mira cómo alguien como tú transformó su cuerpo». Captura nombre/email/sexo/rango de edad + UTMs y redirige al caso. Sin A/B activo. |
 | `index-salud.html`, `index.html` | Landings anteriores (B y control original), **desplegadas sin ruta** para poder revertir cambiando una línea de `vercel.json`. No editarlas salvo rollback. |
 | `casos-de-estudio-va/index.html` | Registro de Veronika. No pregunta sexo: envía `Mujer`, UTMs VA de respaldo y redirige a `/testimonio-flor-va`. |
 | `registro-typeform-optimizado.html`, `registro-typeform-flor.html` | Versiones canónicas editoriales (antes variante A) de Dashiel y Flor. |
+| `testimonio-andrea/index.html`, `testimonio-christian/index.html` | Casos para el rango `mas-35`, con la misma estructura y Typeform que Flor y Dashiel. |
+| `assets/casos-optin/` | Cuatro comparativas en WebP 240/480px; fila fija hasta 899px y carrusel nativo desde 900px. |
 | `registro-typeform-flor-va.html` | Página Flor específica para tráfico VA; ruta pública `/testimonio-flor-va`. Debe mantener el mismo copy que Flor normal y diferenciarse por el video VA. |
 | `registro-typeform-optimizado-B.html`, `registro-typeform-flor-B.html` | Versiones anteriores archivadas como B; no son las rutas públicas actuales. |
 | `calendly-an-optimizado.html`, `calendly-va/index.html`, `calendly-confirma/index.html` | Páginas canónicas editoriales de agendamiento y confirmación. |
@@ -65,7 +69,9 @@ En agendamiento, AN usa Vidalytics `w0UY0FRGIQo11cXX` y VA usa `2s1vpHRi_hOARyIm
 
 ## Sistema tipográfico canónico
 
-La Biblioteca es la referencia visual del proyecto. Todas las páginas canónicas usan la misma carga de Google Fonts y estos roles: **Fraunces** para títulos editoriales, **Instrument Sans** para lectura e interfaz y **JetBrains Mono** para etiquetas, metadatos y estados. Base recomendada: cuerpo `17px/1.55`, display Fraunces `560` con `opsz 100`, cursiva `500`, y metadata Mono `10.5px/500` con tracking amplio. No introducir otra familia o variante de URL sin una decisión visual explícita.
+La Biblioteca mantiene **Fraunces** para títulos editoriales, **Instrument Sans** para lectura e interfaz y **JetBrains Mono** para etiquetas, metadatos y estados. Base recomendada: cuerpo `17px/1.55`, display Fraunces `560` con `opsz 100`, cursiva `500`, y metadata Mono `10.5px/500` con tracking amplio. No introducir otra familia o variante de URL sin una decisión visual explícita.
+
+Caso de Estudio tiene una decisión visual propia aprobada: fuentes locales **Stack Sans Headline** para titulares, **Lexend** para lectura, botones y opciones, y **JetBrains Mono** para etiquetas. En el opt-in Mono se limita a `.lbl`. En los cuatro testimonios, `.dek` y `.cta-subtitle` comparten familia/peso/tamaño/interlineado; la etiqueta centrada lleva resaltador amarillo. Se retiraron los mastheads, títulos grandes con nombres, rayas del copy y líneas decorativas señaladas por el usuario. No restaurarlos al copiar una página antigua.
 
 ## SEO y GEO obligatorios
 
@@ -77,22 +83,24 @@ La Biblioteca es la referencia visual del proyecto. Todas las páginas canónica
 
 ## Modelo de atribución (crítico)
 
-1. El tráfico entra a `index.html` (`/casos-de-estudio`) con UTMs en la URL (orgánico `-AN-`: YouTube/TikTok/Face/IG; o `utm_source=MetaAds`).
-2. `index.html` captura los UTMs (`utmData`, ~línea 1246) y el `?video=`.
-3. Al registrarse, `buildRedirectUrl()` (~línea 1285) redirige al VSL por **sexo**:
-   - `Mujer` → `/testimonio-flor` en el mismo origen de la página actual.
-   - `Hombre` → `/testimonio-dashiel` en el mismo origen de la página actual.
-   - **y adjunta `first_name`, `email`, `sexo`, `video` + TODOS los UTMs** (loop en ~línea 1294).
-4. El registro se guarda en el **Google Sheet `LEADS`** (id `1Tdf7SP70_05h1K7ZtqdH8uWVatob3KSzAXRstyqGfz0`, tab gid 783595842). Columnas: `FECHA · NOMBRE · CORREO · SEXO · UTM_CAMPAIGN · UTM_MEDIO · UTM_SOURCE`.
+1. El tráfico entra a `index-fuerza.html` mediante `/casos-de-estudio` con UTMs en la URL (orgánico `-AN-`: YouTube/TikTok/Face/IG; o `utm_source=MetaAds`).
+2. La landing captura los UTMs (`utmData`) y el `?video=`.
+3. `getCase()` y `buildRedirectUrl()` eligen un destino del mismo origen por **sexo y rango de edad**:
+   - `18-25` o `26-35`: `Mujer` → `/testimonio-flor`; `Hombre` → `/testimonio-dashiel`.
+   - `mas-35`: `Mujer` → `/testimonio-andrea`; `Hombre` → `/testimonio-christian`.
+   - Conservan la query entrante y actualizan `first_name`, `email`, `sexo`, `rango_edad`, `video` y todos los UTMs.
+4. Se mantienen dos envíos con `keepalive`: webhook n8n `casos-estudio` (Brevo/Sheet) y copia directa `TR4Track.saveOptIn()` al CRM `/api/optin`. El **Google Sheet `LEADS`** sigue siendo `1Tdf7SP70_05h1K7ZtqdH8uWVatob3KSzAXRstyqGfz0`, tab gid 783595842. No confundir este registro con la aplicación completa de Typeform que alimenta el pipeline.
 
-> **Este opt-in NO va al CRM.** El CRM (`crm-ventas`) se nutre de Typeform, un paso posterior.
+Decisión del 8-sep-2026: `rango_edad` viaja en la URL, en ambos payloads del opt-in y en `data-tf-hidden` de los cuatro casos. **No se cambia el Typeform externo ni se salta su pregunta de edad**, que conserva el rechazo de menores. Los rangos de ambos formularios aún difieren; el usuario pospone su alineación y no requiere mapear edad en Brevo/Sheet. El transporte al atributo no prueba que Typeform haya declarado/publicado ese parámetro ni que lo almacene. Revisar con datos antes de modificarlo.
+
+Los cuatro casos usan Typeform live `01KHA5RZHGV02HW971F4227939` (formulario `CGxeptJu`). Vidalytics, cuenta `IoH8SL8U`: Flor `sYxbpUd09oZRWy21`, Dashiel `Vk1OyDQZVxfAOUVI`, Andrea `7cbPQZs876r6l9Ae`, Christian `5gVwwJPsJNtuN4EU`. Flor VA conserva su video y ruta independientes. Los cuatro testimonios mantienen `noindex, nofollow` y canonical propio.
 
 ### Regla de navegación y atribución
 
 - Durante previews, redirects y CTAs deben construirse con `window.location.origin` o rutas relativas; nunca hardcodear el dominio de producción. Así el recorrido permanece dentro del mismo deployment de Vercel.
 - En producción, el mismo código resolverá automáticamente sobre `https://metodo.tr4iner.com`.
 - **Cada salto entre páginas debe reenviar todos los parámetros de atribución presentes**, no una lista parcial: cualquier `utm_*`, `video`, `fbclid`, `gclid`, `fbc_id`, `h_ad_id` y futuros identificadores equivalentes.
-- También se preservan los datos funcionales necesarios (`first_name`, `name`, `email`, `sexo` y parámetros de Calendly). El email debe llegar con `@` literal cuando el siguiente sistema lo necesite.
+- También se preservan los datos funcionales necesarios (`first_name`, `name`, `email`, `sexo`, `rango_edad` y parámetros de Calendly). El email debe llegar con `@` literal cuando el siguiente sistema lo necesite.
 - Antes de publicar, probar la cadena completa con UTMs sintéticas y verificar la URL en cada salto.
 
 ### Incidente resuelto — bug de UTMs (13-jul-2026)
@@ -100,9 +108,9 @@ La Biblioteca es la referencia visual del proyecto. Todas las páginas canónica
 
 ## A/B testing de la landing
 
-**Al 22-ago-2026 NO hay ningún test corriendo.** `/casos-de-estudio` sirve `index-fuerza.html`
-(variante C, «No se trata de los kilos / Se trata de con cuánta fuerza vas a llegar a los
-sesenta») a **todo el tráfico, orgánico y pago**, vía el rewrite de `vercel.json`. No hay
+**Al 8-sep-2026 NO hay ningún test corriendo.** `/casos-de-estudio` sirve `index-fuerza.html`
+(«Mira cómo alguien como tú transformó su cuerpo», con selector de edad y cuatro casos)
+a **todo el tráfico, orgánico y pago**, vía el rewrite de `vercel.json`. No hay
 middleware. `index-salud.html` (B) e `index.html` (control original) quedan desplegados **sin
 ruta**: revertir es cambiar una línea, no restaurar archivos.
 
@@ -110,7 +118,7 @@ Se corrieron dos tests, los dos cortados por decisión de negocio antes de alcan
 significancia. Ver `BITACORA.md` (11, 15, 17 y 22-ago) y
 [`docs/ab-casos-de-estudio.md`](docs/ab-casos-de-estudio.md) para la mecánica del split.
 
-Lo que hay que respetar al montar el próximo (C vs D):
+Lo que hay que respetar al montar el próximo (definir etiquetas nuevas para las versiones que se comparen):
 
 - **Rewrite, no redirect.** Con redirect se pierden las UTMs, aparece un salto extra y Meta
   ve una redirección que le ensucia el tracking.

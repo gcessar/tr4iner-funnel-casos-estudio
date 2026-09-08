@@ -13,10 +13,90 @@ Cada entrada incluye: qué cambió, por qué, y resultado esperado o medido.
 
 ---
 
+## 2026-09-08 — Cierre de opt-in por edad y cuatro testimonios para publicación
+
+- Autorización: el usuario aprueba publicar en producción, documentar y seguir el protocolo compartido. Rama de tarea `work/optin-edad`, base `origin/main` `967e334`; primer commit funcional `7973759`. Se verificó que la rama incluye todo `origin/main`, sin conflictos. `CLAUDE.md` sigue siendo symlink a `AGENTS.md`.
+- Estado final aprobado: opt-in con titular «Mira cómo alguien como tú transformó su cuerpo», nombre/email/sexo y edad obligatoria; cuatro fotos WebP en fila fija hasta 899px y carrusel nativo desde 900px, sin Swiper/autoplay. Nombres a 4px de las fotos en móvil. JetBrains Mono solo en etiquetas del registro; botones/opciones conservan Lexend. Las cuatro imágenes de 240px suman 35.832 bytes.
+- Rutas: `18-25` y `26-35` llevan a Flor/Dashiel por sexo; `mas-35` a Andrea/Christian. Se conservan el origen del deployment, la atribución y los datos funcionales en cada salto. Los nuevos directorios no requieren un rewrite adicional.
+- Cuatro testimonios con estructura común: etiqueta «Caso de estudio · Análisis paso a paso» centrada y resaltada, descripción, vídeo 16:9 y el mismo Typeform. Se retiran masthead, título grande, rayas del copy, líneas de las etiquetas y borde superior dentro de la cabecera de aplicación. Descripciones sobre vídeo y Typeform comparten Lexend/peso/tamaño/interlineado. Flor VA y variantes archivadas quedan fuera de este cambio.
+- Vídeos Vidalytics de la cuenta `IoH8SL8U`: Flor `sYxbpUd09oZRWy21`; Dashiel `Vk1OyDQZVxfAOUVI`; Christian `5gVwwJPsJNtuN4EU`; Andrea `7cbPQZs876r6l9Ae`. Typeform live común `01KHA5RZHGV02HW971F4227939`, formulario `CGxeptJu`.
+- Decisión de datos: se mantiene la pregunta de edad de Typeform y su lógica actual, sin preselección ni salto. `rango_edad` viaja en URL/payloads/atributo `data-tf-hidden`; esto no certifica su almacenamiento en Typeform. El usuario acepta no mapear edad en Brevo/Sheet y pospone la alineación de rangos hasta revisar datos. No se modifican n8n, CRM, Typeform externo ni la integración posterior al envío. No se activa un A/B.
+- Preflight local ya completado: sintaxis JS/JSON-LD/recursos de cinco páginas; seis combinaciones de sexo/edad y 12 POST interceptados; conservación de nombre/email/edad/UTMs/video/ad IDs; 15 vistas a 375/768/1280px sin overflow ni errores JS. Los cuatro vídeos y la primera pregunta real del Typeform cargaron. Sin crear leads ni enviar respuestas de prueba.
+- SEO/GEO: opt-in indexable con metadatos actualizados; cuatro testimonios operativos `noindex, nofollow` y canonical propio. No se ha medido Lighthouse, velocidad real ni mejora CRO. Vigilar abandono del nuevo campo y agendas por exposición; un antes/después sin experimento no prueba causalidad.
+- Handoff: `AGENTS.md` actualizado con archivos, fuentes, rutas y contratos actuales. Las entradas locales anteriores son historial de iteración; esta entrada describe el resultado aprobado.
+- Commits subidos: `7973759` lógica de edad, `4a11efb` diseño/fotos del opt-in, `00033d1` cuatro testimonios/vídeos y `0b32b2e` contexto/documentación. Preview Git de `0b32b2e`: `dpl_3UdH5fZzUQKoWXHbXaLeBz9htfn5`, **READY**, `https://tr4iner-funnels-blen7sut7-metodotr4iners-projects.vercel.app`. Su protección de acceso se conservó; QA con enlace temporal emitido por Vercel.
+- QA en ese Preview: cinco rutas reales HTTP 200 y HTML idéntico al commit local, sintaxis JS/JSON-LD correcta, assets sin errores; 6/6 redirecciones conservando origen/identidad/edad/atribución hasta `data-tf-hidden`; 12 POST interceptados, cero leads enviados. Revisión móvil/escritorio sin overflow. Cuatro vídeos `readyState=4` y primera pregunta del Typeform visible después de su animación de carga en los cuatro casos. Cero errores JS observados. La lógica externa de Typeform/CRM no se cambió ni se volvió a enviar un formulario completo.
+- Publicación en producción autorizada por el usuario para este resultado. Siguiente paso: integrar la rama en `main`, verificar deployment de producción y dominio canónico; registrar aquí su evidencia.
+
+## 2026-09-08 — Registro de Caso de Estudio segmentado por edad (revisión local)
+
+- Rama: `work/optin-edad`. Cambio acotado a `index-fuerza.html`; sin publicación en producción.
+- Titular aprobado: «Mira cómo alguien como tú transformó su cuerpo». Formulario visible en un paso, selector obligatorio de edad y ancho máximo de 440px. Se mantienen fuentes locales, CTA amarillo y recursos existentes, sin dependencias adicionales.
+- `rango_edad`: `18-25`, `26-35`, `mas-35`. Los dos primeros rangos llevan a Flor/Dashiel según sexo; el tercero a `/testimonio-andrea` o `/testimonio-christian`. Se adjunta edad a la URL y al payload de ambos envíos existentes. No se ha verificado persistencia de este nuevo campo en CRM/Sheets ni modificado su esquema.
+- SEO/GEO: conserva indexación y canonical; actualiza título, descripción, metadatos sociales y WebPage JSON-LD para el nuevo contenido. Marca y autoría conservadas.
+- QA Chrome con tráfico externo bloqueado: 6/6 rutas, 12 POST interceptados, validación de edad/foco, nombre/email/edad/UTMs/video/identificadores futuros conservados, cero errores JS. Capturas a 375/768/1280px sin overflow. Sin leads reales. No se ha medido Lighthouse ni velocidad de producción; no se atribuye una mejora CRO hasta medir conversión.
+- Pendiente: revisión visual del usuario; construir los destinos Andrea/Christian antes de publicar. Preview y producción no validados. Impacto esperado: correspondencia entre perfil y caso; vigilar abandono por el campo extra y agendas por exposición.
+
+## 2026-09-08 — Prueba visual de los cuatro casos en el opt-in
+
+- Rama `work/optin-edad`. Fotos aportadas por el usuario: Flor, Dashiel, Andrea y Christian. Derivados WebP 240/480px en `assets/casos-optin/`, sin recortar ni retocar las comparativas; las cuatro versiones 240px suman 35.832 bytes. `srcset`, tamaños explícitos y sin dependencias de ejecución nuevas.
+- Dirección visual: Pragmatic Craft, continuidad blanco/tinta/amarillo y fuentes locales existentes. Titular con énfasis amarillo en «alguien como tú», cuatro fotos con nombres y leyenda, distribución de dos columnas en escritorio y tira compacta en móvil. El registro móvil omite el encabezado redundante.
+- El CTA y el subrayado del caso responden a sexo/edad; la misma función decide el destino para impedir discrepancias. Se conserva el contrato de envío, validación y atribución.
+- Revisión local a 375/768/1280px sin overflow; QA de las seis rutas con POST interceptados, sin leads reales. La prueba no mide velocidad de producción ni mejora de conversión. Andrea/Christian y persistencia de edad siguen pendientes como en la entrada anterior. Producción sin modificar.
+
+## 2026-09-08 — Simplificación del encabezado del opt-in
+
+- A pedido del usuario se retiran el masthead «TR4INER / Casos de estudio» y la leyenda «Antes y después · Resultados individuales» de `index-fuerza.html`. Se conservan nombres y descripciones accesibles de las fotos, formulario y redirecciones.
+- Cambio local. Pendiente definir una propuesta de valor más concreta para el registro. Sin publicación ni nuevo intento de escritura Git tras el permiso rechazado.
+
+## 2026-09-08 — Acabado visual y galería posterior al registro móvil
+
+- Aprobado por el usuario: titular sin subrayado amarillo, énfasis tipográfico gris, comparativas completas en dos columnas y galería después del formulario en el DOM/móvil. En escritorio, galería bajo el relato y formulario lateral sin tarjeta, separado por línea fina.
+- Se mantienen titular, copy actual, formulario, selección y contratos. Fotos con carga diferida, dimensiones reservadas y `sizes` ajustados. Sin librerías ni imágenes nuevas.
+- QA Chrome a 375/768/1280px: sin overflow; 6/6 destinos, CTA con nombre y selección visual, 12 POST interceptados, atribución conservada y cero errores JS. Botón a y=647px en 375px de ancho frente a y=853px anterior. Revisión visual móvil/escritorio completada. No se ha medido impacto CRO ni velocidad real.
+- Solo local; producción y A/B sin modificar. Se respeta el rechazo previo del guardado/subida Git; no se reintenta en este turno.
+
+## 2026-09-08 — Regreso al diseño anterior con tipografía Mono y coverflow
+
+- A pedido del usuario se recuperan fotos antes del formulario móvil, énfasis amarillo y tarjeta de registro de escritorio. JetBrains Mono local en etiquetas, opciones, botones y nombres; se mantiene display legible en titulares.
+- Comparativas completas en carrusel de scroll nativo con snap y efecto coverflow CSS, sin dependencia Swiper. Flechas, teclado y gesto táctil, sin autoplay. Movimiento reducido elimina la perspectiva y el scroll animado. Al elegir sexo/edad se centra el caso correspondiente sin cambiar los datos al explorar otros casos.
+- QA local a 375/768/1280px sin overflow, pruebas de flechas/teclado/gesto táctil y redirecciones con envíos interceptados. El carrusel añade altura antes del formulario móvil; no se afirma mejora CRO ni velocidad medida.
+- Producción sin cambios. Guardado Git sigue pendiente por rechazo anterior; no se reintenta.
+
+## 2026-09-08 — Móvil con cuatro fotos fijas y Mono solo en etiquetas
+
+- Por pedido del usuario: hasta 899px, cuatro comparativas en una fila fija, sin perspectiva, flechas ni desplazamiento. `sizes` ajustado al ancho de miniatura. Carrusel de escritorio conservado.
+- JetBrains Mono únicamente en `.lbl`; opciones, CTA, nombres y controles recuperan la fuente heredada. En móvil se retira el foco y la semántica de carrusel. Selección por sexo/edad y destinos conservados.
+- Cambios locales; sin publicación ni nuevo intento de Git tras rechazo anterior.
+
+## 2026-09-08 — Nuevas páginas Christian y Andrea (local)
+
+- Se crean `/testimonio-christian/index.html` y `/testimonio-andrea/index.html`, con estructura/CSS/Typeform de las páginas canónicas Flor y Dashiel. Las rutas se resuelven por directorio sin cambios en rewrites; el servidor estático local añade la barra final conservando la query.
+- Vídeos aportados: Christian `5gVwwJPsJNtuN4EU`, Andrea `7cbPQZs876r6l9Ae`, cuenta Vidalytics `IoH8SL8U`. Mismo contenedor 16:9 y loader que los casos actuales.
+- Introducciones basadas en el proceso completo confirmado por el usuario, sin inventar edades, cifras o antecedentes. Título «El análisis — paso a paso», fecha septiembre 2026, canonical propio y `noindex, nofollow` como los casos actuales. Enlaces legales reales en las páginas nuevas.
+- Typeform live `01KHA5RZHGV02HW971F4227939` (resuelve a `CGxeptJu`), aparición a 3 segundos. Se añade `rango_edad` a identityFields de las cuatro páginas canónicas para evitar perderlo antes del formulario. No se modifica el formulario externo; declarar/publicar ese hidden field y verificar almacenamiento sigue pendiente.
+- QA aislado: Christian/Andrea a 375/768/1280px, vídeos y live ID correctos, parámetros de identidad/edad/video/UTMs/ad IDs en `data-tf-hidden`, cero errores JS y sin overflow. Verificación en vivo: ambos reproductores generan video y el iframe Typeform resuelve al mismo formulario. Al desplazar hasta el iframe se verifica la primera pregunta real «¿Cómo describirías tu cuerpo hoy?» en ambos casos; el contenido se carga al entrar en pantalla. Sin respuestas ni leads enviados.
+- Solo local. Producción sin modificar y guardado/subida Git pendientes tras el rechazo anterior.
+
+## 2026-09-08 — Simplificación visual de las páginas de testimonios
+
+- Se retiran de Flor, Dashiel, Christian y Andrea el masthead superior y el título grande con el nombre del caso. Se conservan la etiqueta de análisis, la descripción del proceso, el vídeo, el Typeform y los contratos de atribución.
+- En Christian y Andrea también queda «paso a paso» sin guion inicial. Cambio visual local; no afecta SEO metadata ni rutas.
+
+## 2026-09-08 — Nuevos vídeos de Flor y Dashiel
+
+- Por pedido del usuario: Flor usa Vidalytics `sYxbpUd09oZRWy21` y Dashiel `Vk1OyDQZVxfAOUVI`, cuenta `IoH8SL8U`. Se actualizan el ID del contenedor y la llamada del loader en las dos páginas canónicas.
+- Se conserva el contenedor responsive 16:9, Typeform y atribución. Cambio local, sin publicación; Flor VA y versiones archivadas sin cambios.
+
+## 2026-09-08 — Retirar rayas del texto y de las etiquetas
+
+- A pedido del usuario se eliminan las líneas decorativas antes de la etiqueta del caso y de «Siguiente paso» en Flor, Dashiel, Christian y Andrea. Se reemplazan las rayas del copy visible por punto o coma, conservando el mensaje. Cambio local de CSS y texto.
+
 ## Índice por fecha
 
 **Septiembre 2026**
 
+- `2026-09-08` — Cierre de opt-in por edad y cuatro testimonios para publicación (incluye iteraciones locales)
 - `2026-09-01` — El expediente muestra los macros y el test vuelve a dos columnas en el teléfono
 - `2026-09-01` — La ruta dice en qué paso está: rótulo del paso y botón que cambia
 

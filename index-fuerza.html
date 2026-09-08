@@ -60,28 +60,24 @@
        index-salud. El duplicado lo resuelve el `canonical` de abajo, que apunta a
        la ruta pública: no hace falta noindex. -->
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-  <title>No se trata de los kilos | TR4INER</title>
-  <meta name="description" content="Anthoni Montalván analiza, mes por mes, un caso real: qué se ordenó primero para que el cambio durara.">
+  <title>Casos de transformación física | TR4INER</title>
+  <meta name="description" content="Selecciona tu sexo y rango de edad para ver un caso de transformación física de TR4INER y conocer qué hizo, paso a paso.">
   <link rel="canonical" href="https://metodo.tr4iner.com/casos-de-estudio">
 
-  <!-- Metadatos sociales y JSON-LD portados de index.html al promover esta página
-       a canónica. Se habían perdido al escribirla como variante de test: una
-       variante con noindex no los necesita, la landing pública sí. El ángulo se
-       adaptó al copy de C —fuerza y autonomía al envejecer— en vez del de pérdida
-       de grasa que traía el control. -->
+  <!-- Metadatos alineados con la selección de caso por sexo y edad. -->
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_LA">
   <meta property="og:site_name" content="TR4INER">
   <meta property="og:url" content="https://metodo.tr4iner.com/casos-de-estudio">
-  <meta property="og:title" content="No se trata de los kilos, sino de cómo vas a llegar a los sesenta">
-  <meta property="og:description" content="Un caso real analizado mes a mes: qué se ordenó primero para conservar fuerza y autonomía, no sólo para bajar de peso.">
+  <meta property="og:title" content="Mira cómo alguien como tú transformó su cuerpo">
+  <meta property="og:description" content="Selecciona tu sexo y rango de edad para ver un caso de transformación física de TR4INER y conocer qué hizo, paso a paso.">
   <meta property="og:image" content="https://metodo.tr4iner.com/10-platos/assets/anthoni-montalvan.webp">
   <meta property="og:image:width" content="600">
   <meta property="og:image:height" content="600">
   <meta property="og:image:alt" content="Anthoni Montalván, entrenador y fundador de TR4INER">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="No se trata de los kilos: caso real">
-  <meta name="twitter:description" content="Anthoni Montalván analiza qué cambió mes a mes para llegar con fuerza a los sesenta.">
+  <meta name="twitter:title" content="Casos de transformación física | TR4INER">
+  <meta name="twitter:description" content="Selecciona tu sexo y rango de edad para ver un caso de transformación física de TR4INER y conocer qué hizo, paso a paso.">
   <meta name="twitter:image" content="https://metodo.tr4iner.com/10-platos/assets/anthoni-montalvan.webp">
 
   <script type="application/ld+json">
@@ -112,15 +108,15 @@
         "@type": "WebPage",
         "@id": "https://metodo.tr4iner.com/casos-de-estudio#webpage",
         "url": "https://metodo.tr4iner.com/casos-de-estudio",
-        "name": "No se trata de los kilos: caso real",
-        "description": "Análisis de un caso real centrado en conservar fuerza, masa muscular y autonomía al envejecer, en vez de perseguir el peso de la balanza.",
+        "name": "Casos de transformación física | TR4INER",
+        "description": "Selecciona tu sexo y rango de edad para ver un caso de transformación física de TR4INER y conocer qué hizo, paso a paso.",
         "inLanguage": "es-419",
-        "dateModified": "2026-08-22",
+        "dateModified": "2026-09-08",
         "author": { "@id": "https://tr4iner.com/#anthoni-montalvan" },
         "publisher": { "@id": "https://tr4iner.com/#organization" },
         "about": [
           { "@type": "Thing", "name": "Fuerza y masa muscular" },
-          { "@type": "Thing", "name": "Envejecimiento saludable" },
+          { "@type": "Thing", "name": "Transformación física" },
           { "@type": "Thing", "name": "Coaching fitness" }
         ],
         "breadcrumb": { "@id": "https://metodo.tr4iner.com/casos-de-estudio#breadcrumb" }
@@ -169,7 +165,7 @@
     --accent: #F5C518;
     --accent-ink: #16181A;
     --error: #C0392B;
-    --max: 400px;
+    --max: 440px;
     --radius: 9px;
     --display: "Stack Sans Headline", -apple-system, "Helvetica Neue", sans-serif;
     --sans: "Lexend", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -259,18 +255,7 @@
     letter-spacing: -0.022em;
     text-wrap: balance;
   }
-  /* La segunda oración es la que filtra: nombra síntomas concretos para
-     que quien viene solo por estética se autoexcluya acá y no gaste
-     un lead. Va más liviana porque primero tiene que leerse el corte. */
-  h1 .sintomas {
-    display: block;
-    margin-top: 9px;
-    font-weight: 400;
-    font-size: 0.6em;
-    line-height: 1.28;
-    letter-spacing: -0.008em;
-    color: var(--ink-soft);
-  }
+  .headline-end { color: var(--ink-soft); }
 
   .subhead {
     font-size: 15px;
@@ -280,9 +265,9 @@
   }
 
   /* ── Formulario ──────────────────────────────────────── */
-  form { margin-top: 22px; }
+  form { margin-top: 24px; }
 
-  .field { margin-bottom: 15px; }
+  .field { margin-bottom: 16px; min-width: 0; }
 
   .lbl {
     display: block;
@@ -342,6 +327,11 @@
     color: #FFFFFF;
   }
   .case:has(input:focus-visible) { outline: 2px solid var(--ink); outline-offset: 2px; }
+
+  .ages { gap: 8px; }
+  .ages .case { min-height: 64px; padding: 10px 4px; font-size: 14px; letter-spacing: 0; text-transform: none; text-align: center; }
+  .ages small { display: block; font-size: 12px; font-weight: 300; }
+  .case:hover { border-color: var(--ink-soft); }
 
   button {
     width: 100%;
@@ -442,6 +432,57 @@
     .page { padding-top: 60px; }
     body { padding-bottom: 52px; }
   }
+
+  @font-face {
+    font-family: "JetBrains Mono"; font-style: normal; font-weight: 100 800;
+    font-display: swap; src: url("/assets/fonts/jetbrains-mono-normal-latin.woff2") format("woff2");
+  }
+  h1 { font-size: clamp(32px, 8.5vw, 40px); line-height: 1.08; letter-spacing: -.035em; text-wrap: balance; }
+  .headline-match { background: linear-gradient(transparent 76%, var(--accent) 76%, var(--accent) 94%, transparent 94%); }
+  .lbl { font-family: "JetBrains Mono", monospace; }
+  .lbl { letter-spacing: .07em; }
+  .subhead { margin-top: 16px; color: var(--ink-soft); }
+  .proof { margin-top: 24px; min-width: 0; }
+  .proof-label { font-size: 11px; font-weight: 400; margin-bottom: 12px; }
+  /* El scroll nativo mantiene el gesto táctil aun sin JavaScript. */
+  .proof-grid { --slide: 210px; display: flex; gap: 8px; overflow-x: auto; padding: 4px max(0px, calc((100% - var(--slide)) / 2)) 0; scroll-snap-type: x mandatory; scrollbar-width: none; overscroll-behavior-x: contain; }
+  .proof-grid::-webkit-scrollbar { display: none; }
+  .proof-grid:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
+  .proof-case { flex: 0 0 var(--slide); min-width: 0; scroll-snap-align: center; border-bottom: 3px solid transparent; padding-bottom: 4px; }
+  .proof-case img { display: block; width: 100%; height: auto; border-radius: 4px; transform: perspective(650px) rotateY(var(--rotation, 0deg)) scale(var(--scale, 1)); }
+  .proof-case figcaption { font-size: 12px; font-weight: 400; margin-top: 8px; text-align: center; }
+  .proof-case.is-selected { border-color: var(--accent); }
+  .gallery-controls { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 4px; }
+  .gallery-controls button { width: 44px; height: 44px; padding: 0; margin: 0; background: transparent; border: 1px solid var(--line); border-radius: 50%; font-size: 18px; }
+  .gallery-position { font-size: 10px; min-width: 125px; text-align: center; }
+  .form-heading { display: none; }
+  form { margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--line); }
+  .case:has(input:checked) { background: #FFF7D7; color: var(--ink); border-color: var(--ink); box-shadow: inset 0 0 0 .5px var(--ink); }
+  .case:has(input:checked)::after { content: ''; width: 5px; height: 9px; border: solid currentColor; border-width: 0 2px 2px 0; transform: rotate(45deg); position: absolute; right: 10px; top: 8px; }
+  button { letter-spacing: .02em; }
+  @media (prefers-reduced-motion: reduce) { .proof-case img { transform: none; } }
+  @media (max-width: 899px) {
+    .proof-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; padding: 0; overflow: visible; scroll-snap-type: none; }
+    .proof-case img { transform: none; }
+    .proof-case figcaption { font-size: 11px; text-align: left; margin-top: 4px; }
+    .gallery-controls { display: none; }
+  }
+  @media (min-width: 900px) {
+    :root { --max: 1080px; }
+    .page { padding-top: 56px; }
+    #form-view { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 64px; align-items: start; }
+    .story { min-width: 0; padding-top: 8px; }
+    h1 { font-size: clamp(44px, 4.3vw, 58px); }
+    .subhead { max-width: 440px; font-size: 16px; }
+    .proof { margin-top: 28px; }
+    .proof-grid { --slide: 260px; }
+    form { margin-top: 0; border: 1px solid var(--line); border-top: 4px solid var(--accent); border-radius: 12px; padding: 28px; }
+    .form-heading { display: block; margin-bottom: 24px; }
+    .form-heading .lbl { margin-bottom: 6px; }
+    .form-heading h2 { font-family: var(--display); font-size: 24px; line-height: 1.15; font-weight: 600; letter-spacing: -.02em; }
+    .firma { padding-top: 40px; }
+    .foot { margin-top: 24px; }
+  }
   </style>
 </head>
 
@@ -450,48 +491,87 @@
 <main class="page" id="contenido">
 
   <div id="form-view">
-    <div class="eyebrow">Caso de estudio</div>
+    <section class="story" aria-labelledby="optin-title">
 
-    <h1>
-      No se trata de los kilos.
-      <span class="sintomas">Se trata de con cuánta fuerza vas a llegar a los sesenta.</span>
+    <h1 id="optin-title">
+      Mira cómo <span class="headline-match">alguien como tú</span> transformó su cuerpo.
     </h1>
 
     <p class="subhead">
-      Mira el caso completo y obtén todo lo que se aplicó: qué cambió cada mes,
-      y en qué orden.
+      Selecciona tu sexo y rango de edad para ver el caso y conocer qué hizo, paso a paso.
     </p>
 
+    <div class="proof" aria-label="Los cuatro casos de estudio">
+      <p class="proof-label">Cuatro historias. Un cambio real.</p>
+      <div class="proof-grid" tabindex="0" role="region" aria-roledescription="carrusel" aria-label="Transformaciones: desliza o usa las flechas para explorar">
+        <figure class="proof-case" data-case="flor">
+          <img src="/assets/casos-optin/flor-240.webp" srcset="/assets/casos-optin/flor-240.webp 240w, /assets/casos-optin/flor-480.webp 480w" sizes="(min-width: 900px) 260px, (min-width: 488px) 104px, calc((100vw - 72px) / 4)" width="480" height="480" loading="lazy" decoding="async" alt="Flor: antes a la izquierda y después a la derecha">
+          <figcaption>Flor</figcaption>
+        </figure>
+        <figure class="proof-case" data-case="dashiel">
+          <img src="/assets/casos-optin/dashiel-240.webp" srcset="/assets/casos-optin/dashiel-240.webp 240w, /assets/casos-optin/dashiel-480.webp 480w" sizes="(min-width: 900px) 260px, (min-width: 488px) 104px, calc((100vw - 72px) / 4)" width="480" height="480" loading="lazy" decoding="async" alt="Dashiel: antes a la izquierda y después a la derecha">
+          <figcaption>Dashiel</figcaption>
+        </figure>
+        <figure class="proof-case" data-case="andrea">
+          <img src="/assets/casos-optin/andrea-240.webp" srcset="/assets/casos-optin/andrea-240.webp 240w, /assets/casos-optin/andrea-480.webp 480w" sizes="(min-width: 900px) 260px, (min-width: 488px) 104px, calc((100vw - 72px) / 4)" width="480" height="480" loading="lazy" decoding="async" alt="Andrea: antes a la izquierda y después a la derecha">
+          <figcaption>Andrea</figcaption>
+        </figure>
+        <figure class="proof-case" data-case="christian">
+          <img src="/assets/casos-optin/christian-240.webp" srcset="/assets/casos-optin/christian-240.webp 240w, /assets/casos-optin/christian-480.webp 480w" sizes="(min-width: 900px) 260px, (min-width: 488px) 104px, calc((100vw - 72px) / 4)" width="480" height="480" loading="lazy" decoding="async" alt="Christian: antes a la izquierda y después a la derecha">
+          <figcaption>Christian</figcaption>
+        </figure>
+      </div>
+      <div class="gallery-controls">
+        <button type="button" class="gallery-prev" aria-label="Caso anterior">←</button>
+        <span class="gallery-position" aria-live="polite" aria-atomic="true">Flor · 1 / 4</span>
+        <button type="button" class="gallery-next" aria-label="Caso siguiente">→</button>
+      </div>
+    </div>
+    </section>
+
     <form id="lm-form" novalidate>
+      <div class="form-heading"><span class="lbl">Tu caso de estudio</span><h2>Encuentra tu punto de partida.</h2></div>
       <input type="text" class="honeypot" id="lm-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
 
       <fieldset class="field" style="border:0;" aria-describedby="err-sexo">
-        <legend class="lbl">Elige el caso que quieres ver</legend>
+        <legend class="lbl">Selecciona tu sexo</legend>
         <div class="cases">
           <label class="case">
-            <input type="radio" name="sexo" value="Mujer">Mujer
+            <input type="radio" name="sexo" value="Mujer" required aria-describedby="err-sexo">Mujer
           </label>
           <label class="case">
-            <input type="radio" name="sexo" value="Hombre">Hombre
+            <input type="radio" name="sexo" value="Hombre" required aria-describedby="err-sexo">Hombre
           </label>
         </div>
         <div class="err" id="err-sexo" role="alert" aria-live="polite"></div>
       </fieldset>
 
+      <fieldset class="field" style="border:0;" aria-describedby="err-edad">
+        <legend class="lbl">¿En qué rango de edad estás?</legend>
+        <div class="cases ages">
+          <label class="case"><input type="radio" name="rango_edad" value="18-25" required aria-describedby="err-edad"><span>18 a 25 <small>años</small></span></label>
+          <label class="case"><input type="radio" name="rango_edad" value="26-35" required aria-describedby="err-edad"><span>26 a 35 <small>años</small></span></label>
+          <label class="case"><input type="radio" name="rango_edad" value="mas-35" required aria-describedby="err-edad"><span>Más de 35 <small>años</small></span></label>
+        </div>
+        <div class="err" id="err-edad" role="alert" aria-live="polite"></div>
+      </fieldset>
+
       <div class="field">
         <label class="lbl" for="lm-nombre">Nombre</label>
-        <input type="text" id="lm-nombre" name="nombre" autocomplete="given-name" placeholder="Tu nombre" aria-describedby="err-nombre">
+        <input type="text" id="lm-nombre" name="nombre" required autocomplete="given-name" placeholder="Tu nombre" aria-describedby="err-nombre">
         <div class="err" id="err-nombre" role="alert" aria-live="polite"></div>
       </div>
 
       <div class="field">
         <label class="lbl" for="lm-email">Correo electrónico</label>
-        <input type="email" id="lm-email" name="email" autocomplete="email" inputmode="email" autocapitalize="none" spellcheck="false" placeholder="tu@correo.com" aria-describedby="err-email">
+        <input type="email" id="lm-email" name="email" required autocomplete="email" inputmode="email" autocapitalize="none" spellcheck="false" placeholder="tu@correo.com" aria-describedby="err-email">
         <div class="err" id="err-email" role="alert" aria-live="polite"></div>
       </div>
 
       <button type="submit" id="lm-submit"><span>Ver el caso</span><span class="arrow" aria-hidden="true">&rarr;</span></button>
     </form>
+
+
   </div>
 
   <div class="firma">
@@ -565,16 +645,23 @@
       var fieldId = id.replace('err-', 'lm-');
       var field = document.getElementById(fieldId);
       if (field) field.setAttribute('aria-invalid', show ? 'true' : 'false');
-      if (id === 'err-sexo') {
-        document.querySelectorAll('input[name="sexo"]').forEach(function(input) {
+      if (id === 'err-sexo' || id === 'err-edad') {
+        var group = id === 'err-sexo' ? 'sexo' : 'rango_edad';
+        document.querySelectorAll('input[name="' + group + '"]').forEach(function(input) {
           input.setAttribute('aria-invalid', show ? 'true' : 'false');
         });
       }
     }
-    function buildRedirectUrl(sexo, nombre, email) {
+    function getCase(sexo, edad) {
+      return edad === 'mas-35'
+        ? (sexo === 'Mujer' ? 'andrea' : 'christian')
+        : (sexo === 'Mujer' ? 'flor' : 'dashiel');
+    }
+    function buildRedirectUrl(sexo, edad, nombre, email) {
       // Mismo origen: preview queda en preview y producción queda en metodo.tr4iner.com.
+      var destino = '/testimonio-' + getCase(sexo, edad);
       var base = new URL(
-        sexo === 'Mujer' ? '/testimonio-flor' : '/testimonio-dashiel',
+        destino,
         window.location.origin
       );
       var p = new URLSearchParams();
@@ -586,6 +673,7 @@
       p.set('first_name', nombre);
       p.set('email', email);
       p.set('sexo', sexo);
+      p.set('rango_edad', edad);
       if (abVariant) p.set('variant', abVariant);
       if (videoId) p.set('video', videoId);
       Object.keys(utmData).forEach(function(key) {
@@ -602,6 +690,7 @@
       var nombre = document.getElementById('lm-nombre').value.trim();
       var email  = document.getElementById('lm-email').value.trim();
       var sexoEl = document.querySelector('input[name="sexo"]:checked');
+      var edadEl = document.querySelector('input[name="rango_edad"]:checked');
       var valid  = true;
 
       showErr('err-nombre', !nombre, 'Ingresa tu nombre');
@@ -614,11 +703,14 @@
         !emailFmt ? 'Ingresa un correo válido' : 'Ingresa un correo real (no uses correos temporales)');
       if (emailBad) valid = false;
 
-      showErr('err-sexo', !sexoEl, 'Elige el caso que quieres ver');
+      showErr('err-sexo', !sexoEl, 'Selecciona tu sexo');
       if (!sexoEl) valid = false;
+      showErr('err-edad', !edadEl, 'Selecciona tu rango de edad');
+      if (!edadEl) valid = false;
 
       if (!valid) {
         if (!sexoEl) document.querySelector('input[name="sexo"]').focus();
+        else if (!edadEl) document.querySelector('input[name="rango_edad"]').focus();
         else if (!nombre) document.getElementById('lm-nombre').focus();
         else document.getElementById('lm-email').focus();
         return;
@@ -633,6 +725,7 @@
         nombre:    nombre,
         email:     email,
         sexo:      sexoVal,
+        rango_edad: edadEl.value,
         video:     videoId,
         utm:       utmData,
         page_url:  window.location.href,
@@ -661,7 +754,73 @@
       } catch (err) { /* idem */ }
 
       // Sin pantalla intermedia: el registro va derecho al caso que eligió.
-      window.location.href = buildRedirectUrl(sexoVal, nombre, email);
+      window.location.href = buildRedirectUrl(sexoVal, edadEl.value, nombre, email);
+    });
+
+    var gallery = document.querySelector('.proof-grid');
+    var slides = Array.from(gallery.querySelectorAll('.proof-case'));
+    var activeSlide = 0;
+    var framePending = false;
+    function paintGallery() {
+      framePending = false;
+      var mobile = window.matchMedia('(max-width: 899px)').matches;
+      if (mobile) {
+        gallery.removeAttribute('tabindex');
+        gallery.removeAttribute('aria-roledescription');
+        gallery.setAttribute('aria-label', 'Los cuatro casos de estudio');
+        return;
+      }
+      gallery.setAttribute('tabindex', '0');
+      gallery.setAttribute('aria-roledescription', 'carrusel');
+      gallery.setAttribute('aria-label', 'Transformaciones: desliza o usa las flechas para explorar');
+      var center = gallery.getBoundingClientRect().left + gallery.clientWidth / 2;
+      var nearest = Infinity;
+      slides.forEach(function(slide, index) {
+        var box = slide.getBoundingClientRect();
+        var distance = (box.left + box.width / 2 - center) / box.width;
+        var bounded = Math.max(-1, Math.min(1, distance));
+        slide.style.setProperty('--rotation', (-bounded * 32) + 'deg');
+        slide.style.setProperty('--scale', 1 - Math.abs(bounded) * 0.13);
+        if (Math.abs(distance) < nearest) { nearest = Math.abs(distance); activeSlide = index; }
+      });
+      document.querySelector('.gallery-position').textContent = slides[activeSlide].querySelector('figcaption').textContent + ' · ' + (activeSlide + 1) + ' / 4';
+      document.querySelector('.gallery-prev').disabled = activeSlide === 0;
+      document.querySelector('.gallery-next').disabled = activeSlide === slides.length - 1;
+    }
+    function moveGallery(index) {
+      if (window.matchMedia('(max-width: 899px)').matches) return;
+      var slide = slides[Math.max(0, Math.min(slides.length - 1, index))];
+      var offset = slide.getBoundingClientRect().left - gallery.getBoundingClientRect().left;
+      gallery.scrollTo({ left: gallery.scrollLeft + offset - (gallery.clientWidth - slide.offsetWidth) / 2,
+        behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
+    }
+    gallery.addEventListener('scroll', function() {
+      if (!framePending) { framePending = true; requestAnimationFrame(paintGallery); }
+    }, { passive: true });
+    gallery.addEventListener('keydown', function(event) {
+      if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
+        event.preventDefault(); moveGallery(activeSlide + (event.key === 'ArrowRight' ? 1 : -1));
+      }
+    });
+    document.querySelector('.gallery-prev').addEventListener('click', function() { moveGallery(activeSlide - 1); });
+    document.querySelector('.gallery-next').addEventListener('click', function() { moveGallery(activeSlide + 1); });
+    window.addEventListener('resize', paintGallery);
+    paintGallery();
+
+    document.querySelectorAll('input[type="radio"]').forEach(function(input) {
+      input.addEventListener('change', function() {
+        showErr(this.name === 'sexo' ? 'err-sexo' : 'err-edad', false);
+        var sexo = document.querySelector('input[name="sexo"]:checked');
+        var edad = document.querySelector('input[name="rango_edad"]:checked');
+        if (!sexo || !edad) return;
+        var selected = getCase(sexo.value, edad.value);
+        moveGallery(slides.findIndex(function(slide) { return slide.dataset.case === selected; }));
+        var names = { flor: 'Flor', dashiel: 'Dashiel', andrea: 'Andrea', christian: 'Christian' };
+        document.querySelector('#lm-submit span').textContent = 'Ver el caso de ' + names[selected];
+        document.querySelectorAll('.proof-case').forEach(function(card) {
+          card.classList.toggle('is-selected', card.dataset.case === selected);
+        });
+      });
     });
 
     document.getElementById('lm-email').addEventListener('blur', function() {

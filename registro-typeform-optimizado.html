@@ -147,11 +147,9 @@
     }
 
     .case-mark {
-      display: flex;
-      align-items: center;
-      gap: 10px;
       margin-bottom: 18px;
-      color: var(--muted);
+      text-align: center;
+      color: var(--ink);
       font-family: var(--mono);
       font-size: var(--meta-size);
       font-weight: var(--meta-weight);
@@ -160,12 +158,11 @@
       text-transform: uppercase;
     }
 
-    .case-mark::before {
-      content: "";
-      width: 25px;
-      height: 1px;
-      flex: 0 0 auto;
-      background: rgba(184, 115, 85, 0.7);
+    .case-mark span {
+      padding: 2px 4px;
+      background: linear-gradient(transparent 35%, #FBE7A0 35%, #FBE7A0 92%, transparent 92%);
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
     }
 
     .title {
@@ -191,12 +188,18 @@
       font-weight: 300;
     }
 
+    .dek,
+    .cta-subtitle {
+      font-family: var(--sans);
+      font-weight: 400;
+      font-size: clamp(16px, 2.1vw, 18.5px);
+      line-height: 1.55;
+    }
+
     .dek {
       max-width: 54ch;
       margin-bottom: 26px;
       color: var(--ink-soft);
-      font-size: clamp(16px, 2.1vw, 18.5px);
-      line-height: 1.55;
     }
 
     .dek em {
@@ -294,7 +297,6 @@
       position: relative;
       margin: 8px 10px 0;
       padding: 28px 18px 20px;
-      border-top: 2px solid rgba(184, 115, 85, 0.72);
     }
 
     .application-header::after {
@@ -322,14 +324,6 @@
       text-transform: uppercase;
     }
 
-    .cta-kicker::before {
-      content: "";
-      width: 25px;
-      height: 1px;
-      flex: 0 0 auto;
-      background: rgba(184, 115, 85, 0.58);
-    }
-
     .cta-title {
       max-width: 480px;
       margin-bottom: 12px;
@@ -351,8 +345,6 @@
     .cta-subtitle {
       max-width: 49ch;
       color: var(--ink-soft);
-      font-size: 15px;
-      line-height: 1.5;
     }
 
     .cta-divider {
@@ -566,7 +558,8 @@
         font-size: 38px;
       }
 
-      .dek {
+      .dek,
+      .cta-subtitle {
         font-size: 15.5px;
       }
     }
@@ -599,14 +592,7 @@
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T88G63P" height="0" width="0" style="display:none;visibility:hidden" title="Google Tag Manager"></iframe></noscript>
   <noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=841122323338135&amp;ev=PageView&amp;noscript=1"></noscript>
   <main class="page" id="inicio">
-    <header class="case-masthead">
-      <span class="case-masthead-brand">Anthoni Montalván / Estudio</span>
-      <span class="case-masthead-date">Agosto 2026</span>
-    </header>
-
-    <div class="case-mark">Caso 01 · Análisis paso a paso</div>
-
-    <h1 class="title"><span class="case-title-line">Dashiel.</span><span class="case-title-line"> <em>El análisis</em> <span class="case-soft">— mes a mes.</span></span></h1>
+    <div class="case-mark"><span>Caso de estudio · Análisis paso a paso</span></div>
 
     <p class="dek">
       Trabaja en construcción y sale a las seis. Años intentándolo solo: imitaba rutinas de internet, se lesionaba, se estancaba.
@@ -620,7 +606,7 @@
       </div>
 
       <div class="video-container">
-        <div id="vidalytics_embed_5dtuyrV6J4QIqcbI"></div>
+        <div id="vidalytics_embed_Vk1OyDQZVxfAOUVI"></div>
       </div>
 
     </section>
@@ -631,7 +617,7 @@
           <div class="cta-kicker">Siguiente paso</div>
           <h2 class="cta-title" id="application-title">Cuéntanos tu situación,<br>en tus <em>propias palabras.</em></h2>
           <p class="cta-subtitle">
-            El equipo lee cada respuesta antes de contactarte. Esto evita que recibas un pitch genérico — lo que te llegue va a ser específico para tu situación.
+            El equipo lee cada respuesta antes de contactarte. Esto evita que recibas un pitch genérico. Lo que te llegue va a ser específico para tu situación.
           </p>
         </div>
 
@@ -722,7 +708,7 @@
           t.run(a);
         });
       });
-    })(window, document, "Vidalytics", "vidalytics_embed_5dtuyrV6J4QIqcbI", "https://fast.vidalytics.com/embeds/IoH8SL8U/5dtuyrV6J4QIqcbI/");
+    })(window, document, "Vidalytics", "vidalytics_embed_Vk1OyDQZVxfAOUVI", "https://fast.vidalytics.com/embeds/IoH8SL8U/Vk1OyDQZVxfAOUVI/");
   </script>
 
   <script src="/attribution.js"></script>
@@ -767,7 +753,7 @@
 
         // `variant` identifica el brazo del A/B de /casos-de-estudio. Typeform
         // también debe tener ese URL parameter declarado y publicado.
-        var identityFields = ["first_name", "name", "email", "sexo", "video", "variant"];
+        var identityFields = ["first_name", "name", "email", "sexo", "rango_edad", "video", "variant"];
         var adIds = ["fbclid", "gclid", "fbc_id", "h_ad_id"];
         var hiddenFields = [];
         params.forEach(function (value, key) {
