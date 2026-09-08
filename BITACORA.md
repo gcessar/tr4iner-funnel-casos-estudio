@@ -13,6 +13,15 @@ Cada entrada incluye: qué cambió, por qué, y resultado esperado o medido.
 
 ---
 
+## 2026-09-08 — Registro de Caso de Estudio segmentado por edad (revisión local)
+
+- Rama: `work/optin-edad`. Cambio acotado a `index-fuerza.html`; sin publicación en producción.
+- Titular aprobado: «Mira cómo alguien como tú transformó su cuerpo». Formulario visible en un paso, selector obligatorio de edad y ancho máximo de 440px. Se mantienen fuentes locales, CTA amarillo y recursos existentes, sin dependencias adicionales.
+- `rango_edad`: `18-25`, `26-35`, `mas-35`. Los dos primeros rangos llevan a Flor/Dashiel según sexo; el tercero a `/testimonio-andrea` o `/testimonio-christian`. Se adjunta edad a la URL y al payload de ambos envíos existentes. No se ha verificado persistencia de este nuevo campo en CRM/Sheets ni modificado su esquema.
+- SEO/GEO: conserva indexación y canonical; actualiza título, descripción, metadatos sociales y WebPage JSON-LD para el nuevo contenido. Marca y autoría conservadas.
+- QA Chrome con tráfico externo bloqueado: 6/6 rutas, 12 POST interceptados, validación de edad/foco, nombre/email/edad/UTMs/video/identificadores futuros conservados, cero errores JS. Capturas a 375/768/1280px sin overflow. Sin leads reales. No se ha medido Lighthouse ni velocidad de producción; no se atribuye una mejora CRO hasta medir conversión.
+- Pendiente: revisión visual del usuario; construir los destinos Andrea/Christian antes de publicar. Preview y producción no validados. Impacto esperado: correspondencia entre perfil y caso; vigilar abandono por el campo extra y agendas por exposición.
+
 ## Índice por fecha
 
 **Septiembre 2026**

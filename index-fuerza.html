@@ -60,28 +60,24 @@
        index-salud. El duplicado lo resuelve el `canonical` de abajo, que apunta a
        la ruta pública: no hace falta noindex. -->
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-  <title>No se trata de los kilos | TR4INER</title>
-  <meta name="description" content="Anthoni Montalván analiza, mes por mes, un caso real: qué se ordenó primero para que el cambio durara.">
+  <title>Casos de transformación física | TR4INER</title>
+  <meta name="description" content="Selecciona tu sexo y rango de edad para ver un caso de transformación física de TR4INER y conocer qué hizo, paso a paso.">
   <link rel="canonical" href="https://metodo.tr4iner.com/casos-de-estudio">
 
-  <!-- Metadatos sociales y JSON-LD portados de index.html al promover esta página
-       a canónica. Se habían perdido al escribirla como variante de test: una
-       variante con noindex no los necesita, la landing pública sí. El ángulo se
-       adaptó al copy de C —fuerza y autonomía al envejecer— en vez del de pérdida
-       de grasa que traía el control. -->
+  <!-- Metadatos alineados con la selección de caso por sexo y edad. -->
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_LA">
   <meta property="og:site_name" content="TR4INER">
   <meta property="og:url" content="https://metodo.tr4iner.com/casos-de-estudio">
-  <meta property="og:title" content="No se trata de los kilos, sino de cómo vas a llegar a los sesenta">
-  <meta property="og:description" content="Un caso real analizado mes a mes: qué se ordenó primero para conservar fuerza y autonomía, no sólo para bajar de peso.">
+  <meta property="og:title" content="Mira cómo alguien como tú transformó su cuerpo">
+  <meta property="og:description" content="Selecciona tu sexo y rango de edad para ver un caso de transformación física de TR4INER y conocer qué hizo, paso a paso.">
   <meta property="og:image" content="https://metodo.tr4iner.com/10-platos/assets/anthoni-montalvan.webp">
   <meta property="og:image:width" content="600">
   <meta property="og:image:height" content="600">
   <meta property="og:image:alt" content="Anthoni Montalván, entrenador y fundador de TR4INER">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="No se trata de los kilos: caso real">
-  <meta name="twitter:description" content="Anthoni Montalván analiza qué cambió mes a mes para llegar con fuerza a los sesenta.">
+  <meta name="twitter:title" content="Casos de transformación física | TR4INER">
+  <meta name="twitter:description" content="Selecciona tu sexo y rango de edad para ver un caso de transformación física de TR4INER y conocer qué hizo, paso a paso.">
   <meta name="twitter:image" content="https://metodo.tr4iner.com/10-platos/assets/anthoni-montalvan.webp">
 
   <script type="application/ld+json">
@@ -112,15 +108,15 @@
         "@type": "WebPage",
         "@id": "https://metodo.tr4iner.com/casos-de-estudio#webpage",
         "url": "https://metodo.tr4iner.com/casos-de-estudio",
-        "name": "No se trata de los kilos: caso real",
-        "description": "Análisis de un caso real centrado en conservar fuerza, masa muscular y autonomía al envejecer, en vez de perseguir el peso de la balanza.",
+        "name": "Casos de transformación física | TR4INER",
+        "description": "Selecciona tu sexo y rango de edad para ver un caso de transformación física de TR4INER y conocer qué hizo, paso a paso.",
         "inLanguage": "es-419",
-        "dateModified": "2026-08-22",
+        "dateModified": "2026-09-08",
         "author": { "@id": "https://tr4iner.com/#anthoni-montalvan" },
         "publisher": { "@id": "https://tr4iner.com/#organization" },
         "about": [
           { "@type": "Thing", "name": "Fuerza y masa muscular" },
-          { "@type": "Thing", "name": "Envejecimiento saludable" },
+          { "@type": "Thing", "name": "Transformación física" },
           { "@type": "Thing", "name": "Coaching fitness" }
         ],
         "breadcrumb": { "@id": "https://metodo.tr4iner.com/casos-de-estudio#breadcrumb" }
@@ -169,7 +165,7 @@
     --accent: #F5C518;
     --accent-ink: #16181A;
     --error: #C0392B;
-    --max: 400px;
+    --max: 440px;
     --radius: 9px;
     --display: "Stack Sans Headline", -apple-system, "Helvetica Neue", sans-serif;
     --sans: "Lexend", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -259,18 +255,7 @@
     letter-spacing: -0.022em;
     text-wrap: balance;
   }
-  /* La segunda oración es la que filtra: nombra síntomas concretos para
-     que quien viene solo por estética se autoexcluya acá y no gaste
-     un lead. Va más liviana porque primero tiene que leerse el corte. */
-  h1 .sintomas {
-    display: block;
-    margin-top: 9px;
-    font-weight: 400;
-    font-size: 0.6em;
-    line-height: 1.28;
-    letter-spacing: -0.008em;
-    color: var(--ink-soft);
-  }
+  .headline-end { color: var(--ink-soft); }
 
   .subhead {
     font-size: 15px;
@@ -280,9 +265,9 @@
   }
 
   /* ── Formulario ──────────────────────────────────────── */
-  form { margin-top: 22px; }
+  form { margin-top: 24px; }
 
-  .field { margin-bottom: 15px; }
+  .field { margin-bottom: 16px; min-width: 0; }
 
   .lbl {
     display: block;
@@ -342,6 +327,11 @@
     color: #FFFFFF;
   }
   .case:has(input:focus-visible) { outline: 2px solid var(--ink); outline-offset: 2px; }
+
+  .ages { gap: 8px; }
+  .ages .case { min-height: 64px; padding: 10px 4px; font-size: 14px; letter-spacing: 0; text-transform: none; text-align: center; }
+  .ages small { display: block; font-size: 12px; font-weight: 300; }
+  .case:hover { border-color: var(--ink-soft); }
 
   button {
     width: 100%;
@@ -453,40 +443,48 @@
     <div class="eyebrow">Caso de estudio</div>
 
     <h1>
-      No se trata de los kilos.
-      <span class="sintomas">Se trata de con cuánta fuerza vas a llegar a los sesenta.</span>
+      Mira cómo alguien como tú <span class="headline-end">transformó su cuerpo.</span>
     </h1>
 
     <p class="subhead">
-      Mira el caso completo y obtén todo lo que se aplicó: qué cambió cada mes,
-      y en qué orden.
+      Selecciona tu sexo y rango de edad para ver el caso y conocer qué hizo, paso a paso.
     </p>
 
     <form id="lm-form" novalidate>
       <input type="text" class="honeypot" id="lm-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
 
       <fieldset class="field" style="border:0;" aria-describedby="err-sexo">
-        <legend class="lbl">Elige el caso que quieres ver</legend>
+        <legend class="lbl">Selecciona tu sexo</legend>
         <div class="cases">
           <label class="case">
-            <input type="radio" name="sexo" value="Mujer">Mujer
+            <input type="radio" name="sexo" value="Mujer" required aria-describedby="err-sexo">Mujer
           </label>
           <label class="case">
-            <input type="radio" name="sexo" value="Hombre">Hombre
+            <input type="radio" name="sexo" value="Hombre" required aria-describedby="err-sexo">Hombre
           </label>
         </div>
         <div class="err" id="err-sexo" role="alert" aria-live="polite"></div>
       </fieldset>
 
+      <fieldset class="field" style="border:0;" aria-describedby="err-edad">
+        <legend class="lbl">¿En qué rango de edad estás?</legend>
+        <div class="cases ages">
+          <label class="case"><input type="radio" name="rango_edad" value="18-25" required aria-describedby="err-edad"><span>18 a 25 <small>años</small></span></label>
+          <label class="case"><input type="radio" name="rango_edad" value="26-35" required aria-describedby="err-edad"><span>26 a 35 <small>años</small></span></label>
+          <label class="case"><input type="radio" name="rango_edad" value="mas-35" required aria-describedby="err-edad"><span>Más de 35 <small>años</small></span></label>
+        </div>
+        <div class="err" id="err-edad" role="alert" aria-live="polite"></div>
+      </fieldset>
+
       <div class="field">
         <label class="lbl" for="lm-nombre">Nombre</label>
-        <input type="text" id="lm-nombre" name="nombre" autocomplete="given-name" placeholder="Tu nombre" aria-describedby="err-nombre">
+        <input type="text" id="lm-nombre" name="nombre" required autocomplete="given-name" placeholder="Tu nombre" aria-describedby="err-nombre">
         <div class="err" id="err-nombre" role="alert" aria-live="polite"></div>
       </div>
 
       <div class="field">
         <label class="lbl" for="lm-email">Correo electrónico</label>
-        <input type="email" id="lm-email" name="email" autocomplete="email" inputmode="email" autocapitalize="none" spellcheck="false" placeholder="tu@correo.com" aria-describedby="err-email">
+        <input type="email" id="lm-email" name="email" required autocomplete="email" inputmode="email" autocapitalize="none" spellcheck="false" placeholder="tu@correo.com" aria-describedby="err-email">
         <div class="err" id="err-email" role="alert" aria-live="polite"></div>
       </div>
 
@@ -565,16 +563,20 @@
       var fieldId = id.replace('err-', 'lm-');
       var field = document.getElementById(fieldId);
       if (field) field.setAttribute('aria-invalid', show ? 'true' : 'false');
-      if (id === 'err-sexo') {
-        document.querySelectorAll('input[name="sexo"]').forEach(function(input) {
+      if (id === 'err-sexo' || id === 'err-edad') {
+        var group = id === 'err-sexo' ? 'sexo' : 'rango_edad';
+        document.querySelectorAll('input[name="' + group + '"]').forEach(function(input) {
           input.setAttribute('aria-invalid', show ? 'true' : 'false');
         });
       }
     }
-    function buildRedirectUrl(sexo, nombre, email) {
+    function buildRedirectUrl(sexo, edad, nombre, email) {
       // Mismo origen: preview queda en preview y producción queda en metodo.tr4iner.com.
+      var destino = edad === 'mas-35'
+        ? (sexo === 'Mujer' ? '/testimonio-andrea' : '/testimonio-christian')
+        : (sexo === 'Mujer' ? '/testimonio-flor' : '/testimonio-dashiel');
       var base = new URL(
-        sexo === 'Mujer' ? '/testimonio-flor' : '/testimonio-dashiel',
+        destino,
         window.location.origin
       );
       var p = new URLSearchParams();
@@ -586,6 +588,7 @@
       p.set('first_name', nombre);
       p.set('email', email);
       p.set('sexo', sexo);
+      p.set('rango_edad', edad);
       if (abVariant) p.set('variant', abVariant);
       if (videoId) p.set('video', videoId);
       Object.keys(utmData).forEach(function(key) {
@@ -602,6 +605,7 @@
       var nombre = document.getElementById('lm-nombre').value.trim();
       var email  = document.getElementById('lm-email').value.trim();
       var sexoEl = document.querySelector('input[name="sexo"]:checked');
+      var edadEl = document.querySelector('input[name="rango_edad"]:checked');
       var valid  = true;
 
       showErr('err-nombre', !nombre, 'Ingresa tu nombre');
@@ -614,11 +618,14 @@
         !emailFmt ? 'Ingresa un correo válido' : 'Ingresa un correo real (no uses correos temporales)');
       if (emailBad) valid = false;
 
-      showErr('err-sexo', !sexoEl, 'Elige el caso que quieres ver');
+      showErr('err-sexo', !sexoEl, 'Selecciona tu sexo');
       if (!sexoEl) valid = false;
+      showErr('err-edad', !edadEl, 'Selecciona tu rango de edad');
+      if (!edadEl) valid = false;
 
       if (!valid) {
         if (!sexoEl) document.querySelector('input[name="sexo"]').focus();
+        else if (!edadEl) document.querySelector('input[name="rango_edad"]').focus();
         else if (!nombre) document.getElementById('lm-nombre').focus();
         else document.getElementById('lm-email').focus();
         return;
@@ -633,6 +640,7 @@
         nombre:    nombre,
         email:     email,
         sexo:      sexoVal,
+        rango_edad: edadEl.value,
         video:     videoId,
         utm:       utmData,
         page_url:  window.location.href,
@@ -661,7 +669,13 @@
       } catch (err) { /* idem */ }
 
       // Sin pantalla intermedia: el registro va derecho al caso que eligió.
-      window.location.href = buildRedirectUrl(sexoVal, nombre, email);
+      window.location.href = buildRedirectUrl(sexoVal, edadEl.value, nombre, email);
+    });
+
+    document.querySelectorAll('input[type="radio"]').forEach(function(input) {
+      input.addEventListener('change', function() {
+        showErr(this.name === 'sexo' ? 'err-sexo' : 'err-edad', false);
+      });
     });
 
     document.getElementById('lm-email').addEventListener('blur', function() {
