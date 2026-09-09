@@ -13,6 +13,16 @@ Cada entrada incluye: qué cambió, por qué, y resultado esperado o medido.
 
 ---
 
+## 2026-09-08 — Producción verificada: opt-in por edad y cuatro casos
+
+- Publicado por autorización del usuario mediante [PR #1](https://github.com/gcessar/tr4iner-funnels/pull/1), integrado en `main` como `1b9bb0c0fb554cb05bdfe1aa992deb9439e78920` el 8-sep a las 18:46 de Lima. Incluye los commits de `work/optin-edad`; el contenido funcional coincide con el Preview validado. El último Preview documental `320f399` también tuvo checks Vercel exitosos (`dpl_FnZzEgaKknqvXgY7SkBCQ2J1GP6r`).
+- Vercel canónico `tr4iner-funnels` (`prj_9PxYgSJyjri8KjC4F6xAyd3NNqtK`), deployment de producción **READY** `dpl_9KKTk5TAj2WYo7Lua35HRVFm9xU8`, Git SHA `1b9bb0c`. URL inmutable: `https://tr4iner-funnels-mvahnp58h-metodotr4iners-projects.vercel.app`. Alias `metodo.tr4iner.com` asignado sin error.
+- Verificación real de `https://metodo.tr4iner.com`: `/casos-de-estudio`, `/testimonio-flor`, `/testimonio-dashiel`, `/testimonio-christian` y `/testimonio-andrea` responden HTTP 200 con el HTML exacto revisado. Se probaron las seis combinaciones de registro, conservación de identidad/edad/UTMs/video/identificadores en URL y de los campos admitidos en `data-tf-hidden`. Los 12 envíos del opt-in fueron interceptados; no se crearon leads ni se enviaron respuestas de Typeform.
+- Los cuatro vídeos cargan (`readyState=4`), y el mismo Typeform muestra su primera pregunta después de completar la animación. Revisión responsive sin overflow, recursos sin fallos y sin errores JavaScript observados. Esta comprobación valida la interfaz y el transporte; no representa una prueba nueva de persistencia CRM/Brevo/Sheets ni un envío completo de Typeform.
+- Handoff Claude/Codex: `AGENTS.md` (compartido por symlink `CLAUDE.md`) contiene el mapa actual. `work/optin-edad` se actualizó al merge de `origin/main`; el cierre documental se guarda en esa rama y se integra por avance rápido en el remoto `main`, sin editar el checkout de `main` reservado por un worktree antiguo de Claude. No se borraron ramas/worktrees. Al retomar, `git fetch --prune`, revisar `origin/main`, estado local y esta entrada; continuar en una rama de tarea, con turnos de escritura separados.
+- Decisiones que se mantienen: misma pregunta de edad y lógica de menores en Typeform; sin alineación de rangos, salto de pregunta ni nuevo mapeo a Brevo/Sheet; no hay A/B activo. El usuario decide revisarlo posteriormente con datos. No hay una automatización programada ni se afirma mejora CRO/velocidad sin medición.
+- El cierre posterior solo modifica esta bitácora: la evidencia anterior identifica el deployment funcional comprobado. Verificar también `READY` del deployment generado por el commit documental final al concluir el turno.
+
 ## 2026-09-08 — Cierre de opt-in por edad y cuatro testimonios para publicación
 
 - Autorización: el usuario aprueba publicar en producción, documentar y seguir el protocolo compartido. Rama de tarea `work/optin-edad`, base `origin/main` `967e334`; primer commit funcional `7973759`. Se verificó que la rama incluye todo `origin/main`, sin conflictos. `CLAUDE.md` sigue siendo symlink a `AGENTS.md`.
@@ -26,7 +36,7 @@ Cada entrada incluye: qué cambió, por qué, y resultado esperado o medido.
 - Handoff: `AGENTS.md` actualizado con archivos, fuentes, rutas y contratos actuales. Las entradas locales anteriores son historial de iteración; esta entrada describe el resultado aprobado.
 - Commits subidos: `7973759` lógica de edad, `4a11efb` diseño/fotos del opt-in, `00033d1` cuatro testimonios/vídeos y `0b32b2e` contexto/documentación. Preview Git de `0b32b2e`: `dpl_3UdH5fZzUQKoWXHbXaLeBz9htfn5`, **READY**, `https://tr4iner-funnels-blen7sut7-metodotr4iners-projects.vercel.app`. Su protección de acceso se conservó; QA con enlace temporal emitido por Vercel.
 - QA en ese Preview: cinco rutas reales HTTP 200 y HTML idéntico al commit local, sintaxis JS/JSON-LD correcta, assets sin errores; 6/6 redirecciones conservando origen/identidad/edad/atribución hasta `data-tf-hidden`; 12 POST interceptados, cero leads enviados. Revisión móvil/escritorio sin overflow. Cuatro vídeos `readyState=4` y primera pregunta del Typeform visible después de su animación de carga en los cuatro casos. Cero errores JS observados. La lógica externa de Typeform/CRM no se cambió ni se volvió a enviar un formulario completo.
-- Publicación en producción autorizada por el usuario para este resultado. Siguiente paso: integrar la rama en `main`, verificar deployment de producción y dominio canónico; registrar aquí su evidencia.
+- Publicación en producción autorizada por el usuario y completada. Ver evidencia en la entrada «Producción verificada: opt-in por edad y cuatro casos».
 
 ## 2026-09-08 — Registro de Caso de Estudio segmentado por edad (revisión local)
 
@@ -96,6 +106,7 @@ Cada entrada incluye: qué cambió, por qué, y resultado esperado o medido.
 
 **Septiembre 2026**
 
+- `2026-09-08` — Producción verificada: opt-in por edad y cuatro casos
 - `2026-09-08` — Cierre de opt-in por edad y cuatro testimonios para publicación (incluye iteraciones locales)
 - `2026-09-01` — El expediente muestra los macros y el test vuelve a dos columnas en el teléfono
 - `2026-09-01` — La ruta dice en qué paso está: rótulo del paso y botón que cambia
